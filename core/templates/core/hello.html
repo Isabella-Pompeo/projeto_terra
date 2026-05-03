@@ -1,34 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cadastro - Projeto Terra</title>
     <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: linear-gradient(135deg, #5C4033, #A47148, #D8B08C);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Times New Roman', Times, serif;
-        }
-        .card {
-            background: #fff8f0;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        h1 {
-            color: #5C4033;
-        }
+      ::placeholder {
+        color: #d3d3d3; /* Cinza claro */
+        opacity: 1;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+      }
     </style>
-</head>
-<body>
-    <div class="card">
-        <h1>Hello World</h1>
-        <p>Primeiro Teste de Django dos Garotos de Programa</p>
-    </div>
-</body>
+  </head>
+  <body>
+    <h2>Formulário de Cadastro</h2>
+    <form method="post">
+      <!-- Nome Completo -->
+      <div class="form-group">
+        <input
+          type="text"
+          name="nome_completo"
+          placeholder="Nome Completo"
+          required
+        />
+      </div>
+
+      <!-- Data de Nascimento (Usa o seletor nativo que integra com Google Agenda no Android/Chrome) -->
+      <div class="form-group">
+        <input
+          type="date"
+          name="data_nascimento"
+          placeholder="Data de Nascimento"
+          required
+        />
+      </div>
+
+      <!-- Número de Telefone (Apenas números) -->
+      <div class="form-group">
+        <input
+          type="tel"
+          name="telefone"
+          placeholder="Número de Telefone"
+          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+          required
+        />
+      </div>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+  </body>
 </html>
