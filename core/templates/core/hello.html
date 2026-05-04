@@ -2,55 +2,121 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro - Projeto Terra</title>
     <style>
-      ::placeholder {
-        color: #d3d3d3; /* Cinza claro */
+      /* Paleta de Cores e Reset */
+      :root {
+        --marrom-escuro: #3e2723;
+        --marrom-claro: #8c391a;
+        --cinza-claro: #d3d3d3;
+        --branco: #ffffff;
+      }
+
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        /* Gradiente indo do marrom escuro para o marrom claro */
+        background: linear-gradient(135deg, #973f2d 0%, #532a1b 100%);
+        background-attachment: fixed; /* Garante que o gradiente cubra a tela toda sem repetir */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Centralização do Formulário */
+      .card-cadastro {
+        background-color: var(--marrom-escuro); /* Card em marrom escuro */
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+        color: var(--branco);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: var(--cinza-claro);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        box-sizing: border-box; /* Garante que o padding não aumente a largura */
+        font-size: 16px;
+      }
+
+      /* Estilo dos Placeholders */
+      input::placeholder {
+        color: var(--cinza-claro);
         opacity: 1;
       }
-      .form-group {
-        margin-bottom: 15px;
+
+      /* Botão estilizado */
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--marrom-claro);
+        color: var(--cinza-claro);
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
       }
-      label {
-        display: block;
+
+      button:hover {
+        background-color: #bcaaa4;
       }
     </style>
   </head>
   <body>
-    <h2>Formulário de Cadastro</h2>
-    <form method="post">
-      <!-- Nome Completo -->
-      <div class="form-group">
-        <input
-          type="text"
-          name="nome_completo"
-          placeholder="Nome Completo"
-          required
-        />
-      </div>
+    <div class="card-cadastro">
+      <h2>Cadastro Terra</h2>
+      <form method="post">
+        <!-- Nome Completo -->
+        <div class="form-group">
+          <input
+            type="text"
+            name="nome_completo"
+            placeholder="Nome Completo"
+            required
+          />
+        </div>
 
-      <!-- Data de Nascimento (Usa o seletor nativo que integra com Google Agenda no Android/Chrome) -->
-      <div class="form-group">
-        <input
-          type="date"
-          name="data_nascimento"
-          placeholder="Data de Nascimento"
-          required
-        />
-      </div>
+        <!-- Data de Nascimento -->
+        <div class="form-group">
+          <input
+            type="date"
+            name="data_nascimento"
+            placeholder="Data de Nascimento"
+            required
+          />
+        </div>
 
-      <!-- Número de Telefone (Apenas números) -->
-      <div class="form-group">
-        <input
-          type="tel"
-          name="telefone"
-          placeholder="Número de Telefone"
-          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-          required
-        />
-      </div>
+        <!-- Número de Telefone (Apenas números via JS) -->
+        <div class="form-group">
+          <input
+            type="tel"
+            name="telefone"
+            placeholder="Número de Telefone"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            required
+          />
+        </div>
 
-      <button type="submit">Cadastrar</button>
-    </form>
+        <button type="submit">CADASTRAR</button>
+      </form>
+    </div>
   </body>
 </html>
